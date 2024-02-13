@@ -1,6 +1,7 @@
 
 public class Main {
     public static void main(String[] args) {
+        // Inheritance - "Is A" Relationship
         SalariedEmployee employeeOne = new SalariedEmployee();
         employeeOne.setFirstName("Joe");
         employeeOne.setLastName("Jones");
@@ -46,5 +47,39 @@ public class Main {
         employeeSeven.setSocialNumber("777-77-7777");
         employeeSeven.setCommisionRate(22);
         employeeSeven.setGrossSales(40_000);
+
+        // Polymorphism
+        Ship[] shipGroup = new Ship[3];
+        shipGroup[0] = new Ship();
+        Ship shipOne = (Ship)shipGroup[0];
+        shipOne.setShipName("SS Yorker");
+        shipOne.setYearBuilt("1909");
+
+        shipGroup[1] = new CruiseShip();
+        CruiseShip shipTwo = (CruiseShip)shipGroup[1];
+        shipTwo.setShipName("SS Retriever");
+        shipTwo.setMaxPassengerLimit(800);
+
+        shipGroup[2] = new CargoShip();
+        CargoShip shipThree = (CargoShip)shipGroup[2];
+        shipThree.setShipName("SS Hauler");
+        shipThree.setShipTonnageLimit(10000);
+
+        for(int i = 0; i < shipGroup.length; i++)
+        {
+            shipGroup[i].printer();
+        }
+
+        Course course = new Course();
+        Instructor instructor = new Instructor();
+        Textbook textbook = new Textbook();
+
+        instructor.setInstructorFirstName("Nima");
+        instructor.setInstructorLastName("Davarpanah");
+        instructor.setInstructorOfficeNumber("Office 3-2636");
+        textbook.setTextbookTitle("Clean Code");
+        textbook.setTextbookAuthor("Robert C. Martin");
+        textbook.setTextbookPublisher("Pearson");
+        course.printer();
     }
 }
