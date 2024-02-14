@@ -48,10 +48,10 @@ public class Main {
         employeeSeven.setCommisionRate(22);
         employeeSeven.setGrossSales(40_000);
 
-        // Polymorphism
+        // Polymorphism - reuse classes
         Ship[] shipGroup = new Ship[3];
         shipGroup[0] = new Ship();
-        Ship shipOne = (Ship)shipGroup[0];
+        Ship shipOne = shipGroup[0];
         shipOne.setShipName("SS Yorker");
         shipOne.setYearBuilt("1909");
 
@@ -65,21 +65,46 @@ public class Main {
         shipThree.setShipName("SS Hauler");
         shipThree.setShipTonnageLimit(10000);
 
-        for(int i = 0; i < shipGroup.length; i++)
-        {
-            shipGroup[i].printer();
+        for (Ship shipDisplay : shipGroup) {
+            shipDisplay.printer();
         }
 
+        // Aggregation - "HAS A" Relationship
+        System.out.println("\n--------------");
         Course course = new Course();
-        Instructor instructor = new Instructor();
-        Textbook textbook = new Textbook();
-
-        instructor.setInstructorFirstName("Nima");
-        instructor.setInstructorLastName("Davarpanah");
-        instructor.setInstructorOfficeNumber("Office 3-2636");
-        textbook.setTextbookTitle("Clean Code");
-        textbook.setTextbookAuthor("Robert C. Martin");
-        textbook.setTextbookPublisher("Pearson");
+        course.setCourseName("CS 4800 - Software Engineering");
+        course.instructor.setInstructorFirstName("Nima");
+        course.instructor.setInstructorLastName("Davarpanah");
+        course.instructor.setInstructorOfficeNumber("Office 3-2636");
+        course.textbook.setTextbookTitle("Clean Code");
+        course.textbook.setTextbookAuthor("Robert C. Martin");
+        course.textbook.setTextbookPublisher("Pearson");
         course.printer();
+
+        Course scienceCourse = new Course();
+        scienceCourse.setCourseName("BIO 1080 - Biology Intro");
+        scienceCourse.instructor.setInstructorFirstName("Jack");
+        scienceCourse.instructor.setInstructorLastName("Smith");
+        scienceCourse.instructor.setInstructorOfficeNumber("Office 8-08");
+        scienceCourse.textbook.setTextbookTitle("Biology: An Introduction");
+        scienceCourse.textbook.setTextbookAuthor("Janey Ablersch");
+        scienceCourse.textbook.setTextbookPublisher("Wiley");
+        scienceCourse.printer();
+
+        Course mathCourse = new Course();
+        mathCourse.setCourseName("MATH 4060 - Calculus 2");
+        mathCourse.instructor.setInstructorFirstName("Issac");
+        mathCourse.instructor.setInstructorLastName("Asimov");
+        mathCourse.instructor.setInstructorOfficeNumber("Office 8-3250");
+        mathCourse.textbook.setTextbookTitle("Calculus: The Sequel");
+        mathCourse.textbook.setTextbookAuthor("Frank Roberts");
+        mathCourse.textbook.setTextbookPublisher("Wulters Klewer");
+        mathCourse.printer();
+
+        System.out.println("\n--------------");
+
+        //Composition - "OWN A" Relationship
+        Folder folder = new Folder("php_demo1", "text", ".txt");
+        folder.printer();
     }
 }
