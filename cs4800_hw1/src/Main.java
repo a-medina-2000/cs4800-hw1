@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         // Inheritance - "Is A" Relationship
@@ -104,7 +104,41 @@ public class Main {
         System.out.println("\n--------------");
 
         //Composition - "OWN A" Relationship
-        Folder folder = new Folder("php_demo1", "text", ".txt");
-        folder.printer();
+        Folder phpDemo = new Folder("php_demo1");
+        Folder sourceFiles = new Folder("Source Files");
+        Folder phalcon = new Folder(".phalcon");
+        Folder app = new Folder("app");
+        Folder config = new Folder("config");
+        Folder controllers = new Folder("controllers");
+        Folder library = new Folder("library");
+        Folder migrations = new Folder("migrations");
+        Folder models = new Folder("models");
+        Folder views = new Folder("views");
+        Folder cache = new Folder("cache");
+        Folder publicFolder = new Folder("public");
+        File htaccess = new File(".htaccess", "");
+        File htrouter = new File(".htrouter", ".php");
+        File index = new File("index", ".html");
+        Folder includePath = new Folder("Include Path");
+        Folder remoteFiles = new Folder("Remote Files");
+
+        phpDemo.addSubFolder(sourceFiles);
+        phpDemo.addSubFolder(includePath);
+        phpDemo.addSubFolder(remoteFiles);
+        sourceFiles.addSubFolder(phalcon);
+        sourceFiles.addSubFolder(app);
+        sourceFiles.addSubFolder(cache);
+        sourceFiles.addSubFolder(publicFolder);
+        app.addSubFolder(config);
+        app.addSubFolder(controllers);
+        app.addSubFolder(library);
+        app.addSubFolder(migrations);
+        app.addSubFolder(models);
+        app.addSubFolder(views);
+        sourceFiles.addFile(htaccess);
+        sourceFiles.addFile(htrouter);
+        sourceFiles.addFile(index);
+
+        phpDemo.printer();
     }
 }
